@@ -1,0 +1,27 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8081:8080"
+    depends_on:
+      - postgres
+    networks:
+      - s-network
+
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: mursalin
+      POSTGRES_PASSWORD: 1234
+      POSTGRES_DB: mursalin-tutorials
+    volumes:
+      - postgres-s-data:/var/lib/postgresql/
+    networks:
+      - s-network
+
+volumes:
+  postgres-s-data:
+
+networks:
+  s-network:
+    driver: bridge
