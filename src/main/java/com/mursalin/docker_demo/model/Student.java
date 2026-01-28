@@ -4,14 +4,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Entity
-@AllArgsConstructor
 @Data
-@NoArgsConstructor
+@RequiredArgsConstructor
 public class Student {
     
     @Id
@@ -19,4 +18,9 @@ public class Student {
     private int id;
     private String name;
     private int age;
+
+    public Student(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
 }
